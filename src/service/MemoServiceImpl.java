@@ -14,14 +14,14 @@ import java.util.Date;
 public class MemoServiceImpl implements MemoService {
     private Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
-    @Override
+
     public boolean addMemo(Memo memo) {
         boolean success = false;
         MemoDao dao = new MemoDao();
 
         //set default notification date
         if (memo.getNotificationDate() == null) {
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             try {
                 Date date = df.parse("2000-01-01 00:00:00");
                 memo.setNotificationDate(date);
@@ -46,6 +46,7 @@ public class MemoServiceImpl implements MemoService {
         return success;
     }
 
+    /*  DISCARD
     @Override
     public boolean updateMemo(Memo memo) {
         MemoDao dao = new MemoDao();
@@ -53,7 +54,9 @@ public class MemoServiceImpl implements MemoService {
         dao.close();
         return success;
     }
+    */
 
+    /*  DISCARD
     @Override
     public boolean setNotificationDate(String id, Date date) {
         MemoDao dao = new MemoDao();
@@ -61,6 +64,7 @@ public class MemoServiceImpl implements MemoService {
         dao.close();
         return success;
     }
+    */
 
     @Override
     public String getSingleMemo(String id) {
@@ -105,18 +109,24 @@ public class MemoServiceImpl implements MemoService {
     public boolean synchronizeMemos(ArrayList<Memo> list) {
         MemoDao dao = new MemoDao();
         boolean update_completed = true;
+        boolean delete_completed = true;
         boolean add_completed = true;
         boolean isExisted = false;
         for (Memo memo : list) {
             String id = memo.getId();
             isExisted = dao.isExistedMemo(id);
-            if (isExisted) {
-                update_completed &= updateMemo(memo);
-            } else {
+            if (isExisted && memo.getState() != 0) {
+                //update
+                update_completed &= dao.updateMemo(memo);
+            } else if (isExisted && memo.getState() == 0) {
+                //delete
+                delete_completed &= dao.delMemo(memo.getId());
+            } else if (!isExisted) {
+                //add
                 add_completed &= addMemo(memo);
             }
         }
         dao.close();
-        return (update_completed && add_completed);
+        return (update_completed && delete_completed && add_completed);
     }
 }

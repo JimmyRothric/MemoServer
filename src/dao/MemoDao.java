@@ -81,14 +81,16 @@ public class MemoDao extends BaseDao {
     }
 
     public boolean updateMemo(Memo memo) {
-        String sql = "update Memo set title = ?, content = ?, lastModifyDate = ? where id = ?";
+        String sql = "update Memo set title = ?, content = ?, " +
+                "lastModifyDate = ?, notificationDate = ? where id = ?";
         boolean success = false;
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, memo.getTitle());
             stmt.setString(2, memo.getContent());
             stmt.setTimestamp(3, new Timestamp(memo.getLastModifyDate().getTime()));
-            stmt.setString(4, memo.getId());
+            stmt.setTimestamp(4, new Timestamp(memo.getNotificationDate().getTime()));
+            stmt.setString(5, memo.getId());
             stmt.executeUpdate();
             stmt.close();
             success = true;
@@ -98,6 +100,7 @@ public class MemoDao extends BaseDao {
         return success;
     }
 
+    /*  DISCARD
     public boolean setNotificationDate(String id, Date date) {
         String sql = "update Memo set notificationDate = ? where id = ?";
         boolean success = false;
@@ -113,6 +116,7 @@ public class MemoDao extends BaseDao {
         }
         return success;
     }
+    */
 
     public Memo getSingleMemo(String id) {
         Memo memo = null;

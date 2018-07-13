@@ -30,6 +30,7 @@ public class MemoServlet extends HttpServlet {
             response.getWriter().write("test");
             return;
         }
+        /*  DISCARD
         if (function.equals("addMemo")) {
             String obj = request.getParameter("obj");
             boolean success = memoService.addMemo(gson.fromJson(obj, Memo.class));
@@ -55,6 +56,7 @@ public class MemoServlet extends HttpServlet {
             boolean success = memoService.setNotificationDate(id, notificationDate);
             response.getWriter().write(String.valueOf(success));
         }
+        */
         if (function.equals("synchronizeMemos")) {
             String list = request.getParameter("list");
             JsonParser parser = new JsonParser();
