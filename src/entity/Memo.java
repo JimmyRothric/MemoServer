@@ -51,11 +51,12 @@ public class Memo {
     }
 
     //update
-    public Memo(String id, String title, String content, Date lastModifyDate) {
+    public Memo(String id, String title, String content, Date lastModifyDate, Date notificationDate) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.lastModifyDate = lastModifyDate;
+        this.notificationDate = notificationDate;
     }
 
     public String getId() {
