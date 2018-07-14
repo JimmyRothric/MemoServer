@@ -12,7 +12,7 @@ create table Memo
 	id char(20),
 	accid char(20),
 	title varchar(20) not null,
-	content varchar(1000) not null,
+	content varchar(10000) not null,
 	createDate datetime not null,
 	lastModifyDate datetime,
 	notificationDate datetime,

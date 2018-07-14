@@ -1107,8 +1107,12 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="278" parent="3" name="account"/>
-    <table id="279" parent="3" name="memo"/>
+    <table id="278" parent="3" name="account">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="279" parent="3" name="memo">
+      <Collation>utf8_general_ci</Collation>
+    </table>
     <column id="280" parent="278" name="id">
       <Position>1</Position>
       <DataType>char(20)|0s</DataType>
@@ -1151,7 +1155,7 @@
     </column>
     <column id="287" parent="279" name="content">
       <Position>4</Position>
-      <DataType>varchar(1000)|0s</DataType>
+      <DataType>varchar(10000)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>

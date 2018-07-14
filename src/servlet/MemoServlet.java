@@ -91,11 +91,13 @@ public class MemoServlet extends HttpServlet {
             boolean success = memoService.delMemo(id);
             response.getWriter().write(String.valueOf(success));
         }
+        /*  DISCARD
         if (function.equals("getSingleMemo")) {
             String id = request.getParameter("id");
             String result = memoService.getSingleMemo(id);
             response.getWriter().write(result);
         }
+        */
         if (function.equals("getAllMyMemos")) {
             String accId = request.getParameter("accId");
             String result = memoService.getAllMyMemos(accId);

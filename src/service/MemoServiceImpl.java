@@ -64,7 +64,7 @@ public class MemoServiceImpl implements MemoService {
         dao.close();
         return success;
     }
-    */
+
 
     @Override
     public String getSingleMemo(String id) {
@@ -78,7 +78,7 @@ public class MemoServiceImpl implements MemoService {
         dao.close();
         return result;
     }
-
+    */
     @Override
     public String getAllMyMemos(String accId) {
         String result = "";
