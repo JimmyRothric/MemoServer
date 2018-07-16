@@ -22,11 +22,17 @@ public class Test {
         //Memo Servlet
         ArrayList<Memo> list = new ArrayList<Memo>();
         Date date = new Date();
-        list.add(new Memo("a0001", "test add", "test message"));
-        list.add(new Memo("a0001", "test add 1", "test message1"));
-        list.add(new Memo("m0000", "test update", "test message2", date, null));
+        //Test add
+        list.add(new Memo("a0001", "test add 2", "test message"));
+        list.add(new Memo("a0001", "test add 3", "test message1"));
 
         System.out.println("test synchronizeMemos====" + httpRequest.synchronizeMemos(list));
+        //Test delete
+        list.get(0).setState(0);
+        //Test update
+        list.get(1).setNotificationDate(date);
+        System.out.println("test synchronizeMemos====" + httpRequest.synchronizeMemos(list));
+
         System.out.println("test delMemo====" + httpRequest.delMemo("m0001"));
         System.out.println("test getAllMyMemos====" + httpRequest.getAllMyMemos("a0001"));
         System.out.println("test getAllDiscardedMemos====" + httpRequest.getAllDiscardedMemos("a0001"));

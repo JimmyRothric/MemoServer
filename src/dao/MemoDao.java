@@ -38,7 +38,7 @@ public class MemoDao extends BaseDao {
             stmt.setTimestamp(5, new Timestamp(memo.getCreateDate().getTime()));
             stmt.setTimestamp(6, new Timestamp(memo.getLastModifyDate().getTime()));
             stmt.setTimestamp(7, new Timestamp(memo.getNotificationDate().getTime()));
-            stmt.setInt(8, 1);
+            stmt.setInt(8, memo.getState());
             stmt.executeUpdate();
             stmt.close();
             return true;
@@ -49,7 +49,7 @@ public class MemoDao extends BaseDao {
     }
 
     public boolean isExistedMemo(String id) {
-        String sql = "select * from Memo where id = ? and state = 1";
+        String sql = "select * from Memo where id = ?";
         boolean isExisted = false;
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);

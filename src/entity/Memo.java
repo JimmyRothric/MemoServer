@@ -48,6 +48,7 @@ public class Memo {
         this.content = content;
         this.createDate = date;
         this.lastModifyDate = date;
+        this.state = 1;
     }
 
     //update
