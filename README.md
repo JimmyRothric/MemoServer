@@ -2,7 +2,7 @@
 IDE：推荐使用IntelliJ IDEA  
 Server：Tomcat 9.0.8  
 Database：MySQL  
-客户端程序：[MyMemo](https://github.com/sayssy/MyMemo)
+客户端程序：`Author: sayssy` [MyMemo](https://github.com/sayssy/MyMemo)
 ****
 #### 如何本地测试
 + 1 运行SQL文件夹下 [`CreateTables.sql`](https://github.com/JimmyRothric/MemoServer/blob/master/SQL/CreateTables.sql)代码，创建数据库。
